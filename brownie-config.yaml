@@ -1,0 +1,82 @@
+project_structure:
+    build: build
+    contracts: contracts
+    interfaces: interfaces
+    reports: reports
+    scripts: scripts
+    tests: tests
+
+networks:
+    default: mainnet-fork
+    development:
+        gas_limit: max
+        gas_buffer: 1
+        gas_price: 0
+        max_fee: null
+        priority_fee: null
+        reverting_tx_gas_limit: max
+        default_contract_owner: true
+        cmd_settings: null
+    live:
+        gas_limit: auto
+        gas_buffer: 1.1
+        gas_price: auto
+        max_fee: null
+        priority_fee: null
+        reverting_tx_gas_limit: false
+        default_contract_owner: false
+
+compiler:
+    evm_version: null
+    solc:
+        version: null
+        optimizer:
+            enabled: true
+            runs: 200
+        remappings: 
+            - "@chainlink=smartcontractkit/chainlink@1.9.0"
+    vyper:
+        version: null
+
+console:
+    show_colors: true
+    color_style: monokai
+    auto_suggest: true
+    completions: true
+    editing_mode: emacs
+
+reports:
+    exclude_paths: null
+    exclude_contracts: null
+    only_include_project: true
+
+hypothesis:
+    deadline: null
+    max_examples: 50
+    report_multiple_bugs: False
+    stateful_step_count: 10
+    phases:
+        explicit: true
+        reuse: true
+        generate: true
+        target: true
+        shrink: true
+
+networks:
+    mainnet-fork:
+        ETH_USD_Price_Feeder: "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419"
+        BTC_USD_Price_Feeder: "0xf4030086522a5beea4988f8ca5b36dbc97bee88c"
+        cmd_settings: 
+            mnemonic: amrithnarayan
+            unlock: 
+                - 0x06601571AA9D3E8f5f7CDd5b993192618964bAB5
+    polygon-main:
+        ETH_USD_Price_Feeder: "0xf9680d99d6c9589e2a93a78a04a279e509205945"
+        BTC_USD_Price_Feeder: "0xc907e116054ad103354f2d350fd2514433d57f6f"
+
+autofetch_sources: true
+dependencies: 
+    - smartcontractkit/chainlink@1.9.0
+dev_deployment_artifacts: false
+
+dotenv: .env
